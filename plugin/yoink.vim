@@ -20,12 +20,6 @@ if !has("nvim")
     augroup END
 endif
 
-augroup _Yoink
-    au!
-    autocmd TextYankPost * call yoink#onYank(copy(v:event))
-    autocmd VimEnter * call yoink#onVimEnter()
-augroup END
-
 " <c-u> because count is handled internally to each of these
 nnoremap <silent> <plug>(YoinkRotateForward) :<c-u>call yoink#rotateThenPrint(-1)<cr>
 nnoremap <silent> <plug>(YoinkRotateBack) :<c-u>call yoink#rotateThenPrint(1)<cr>
@@ -48,4 +42,3 @@ xnoremap <silent> <expr> <plug>(YoinkYankPreserveCursorPosition) yoink#startYank
 
 command! -nargs=0 Yanks call yoink#showYanks()
 command! -nargs=0 ClearYanks call yoink#clearYanks()
-
